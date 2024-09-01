@@ -11,10 +11,16 @@ const tasks: Task[] = [
   { id: 2, name: "ランニング" },
 ];
 
+// 待機する関数
+const sleep = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
 // この非同期関数の定義としてルートハンドラーになる
 // 関数名がHTTPメソッドと対応しているGETメソッドになる
 // POSTやPUTやDELETEにも対応している
 export const GET = async () => {
+  // 3秒待ちます
+  await sleep(3000);
   // const tasksをルートハンドラーの戻り値としてクライアントに返却する
   // 第二引数にはステータスコードを宣言可能
   //   ルートハンドラーは静的な要素としてビルドされる
